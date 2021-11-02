@@ -13,6 +13,39 @@
   - Saves time
   - Prevents mistakes
   - Ensures consistency
+- Usage:
+```
+Usage: dotnet new rocfeature [options]
+
+Options:
+  -m|--model                    The Title Case model name for the new feature.
+                                string - Required
+
+  -s|--singular                 Singular Title Case display name used in places like the model [DisplayNameEx()] attribute and the Definition.ts file.
+                                string - Required
+
+  -p|--plural                   Plural Title Case display name used in places like the model [DisplayNameEx()] attribute and the Definition.ts file.
+                                string - Required
+
+  -f|--featureFolder            Backend feature folder name.
+                                string - Required
+
+  -cf|--clientAppFeatureFolder  Client app feature folder name.
+                                string - Required
+
+  -v|--versionable              Enables versioning on the model.
+                                bool - Optional
+                                Default: false / (*) true
+
+  -ar|--ajaxRoute               The base url for the ajax endpoints. If not specified, the feature folder path will be used.
+                                string - Optional
+
+  -cr|--clientRoute             The base route for the client app. If not specified, the feature folder path will be used.
+                                string - Optional
+
+
+* Indicates the value used if the switch is provided without a value.
+```
 
 ## ROC Hierarchy
 - Core Files: `Roc\Features\Lawyers`
