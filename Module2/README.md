@@ -15,7 +15,7 @@
   - Ensures consistency
 
 ## ROC Hierarchy
-- Core Files: `Roc\Features\Lawyers\`
+- Core Files: `Roc\Features\Lawyers`
     - **Models**:
         - Models which should mirror tables in the database
         - Location: `Roc\Features\Lawyers\Models`
@@ -32,12 +32,12 @@
         - Data transfer objects (DTO) that are used for mediator requests and responses
         - Location: Inside slice classes
 - Admin Files:
-    - Backend Controllers: `Roc.Admin\Features\Lawyers\`
-    - React Components: `Roc.Admin\ClientApp\features\lawyers\`
+    - Backend Controllers: `Roc.Admin\Features\Lawyers`
+    - React Components: `Roc.Admin\ClientApp\features\lawyers`
     - EntityDefinition
 - Storefront Files:
     - Controllers and Views: `Roc.Web\Features\Lawyers\`
-    - React Components: `Roc.Web\ClientApp\features\lawyers\`
+    - React Components: `Roc.Web\ClientApp\features\lawyers`
 
 ## Entity Framework Migrations Overview
 - When using EF, all db schema changes should be applied via migrations
