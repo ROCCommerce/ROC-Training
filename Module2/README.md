@@ -3,7 +3,6 @@
 ## Learning Goals
 - ROC Code Generator
 - Entity Framework Migrations
-- EntityDefinition
 - Mediator and Slices
 
 ## Getting Started - ROC Code Generator
