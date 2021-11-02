@@ -164,13 +164,38 @@ const siteSidebarItems: SidebarItemList = [
 - Fix References to `Name` to be `FirstName`
     - Remove inheritance of `INamedModel` on the `Lawyer` class *(It is important you do this before the next step)*
     - Use VS2019 to rename `Name` to `FirstName`
-- Add a `LastName` property to the `Lawyer` class
+- Add a `LastName` property to the `Lawyer` model class
 - Create a migration: `dotnet ef migrations add UpdateLawyerNames`
 - Run the migration: `dotnet ef database update`
 - Attempt to create a lawyer. Notice it is failing
-- Update `Roc.Features.Lawyers.Edit.Dto.Name` to be `FirstName`. Add a `LastName` property to the dto.
+- Update `Roc.Features.Lawyers.Edit.Dto.Name` to be `FirstName`
+- Add a `LastName` property to `Roc.Features.Lawyers.Edit.Dto`.
 - Update the edit form in react
     - File: `Roc.Admin\ClientApp\features\lawyers\LawyerEdit.tsx`
     - Change `TranslatedField` component for "Name" to have a label of "First Name" and a name of "firstName"
     - Add another `TranslatedField` component with a label of "Last Name" and a name of "lastName"
 - Update the mapping profile of the `Roc.Features.Lawyers.Listing.Dto`
+```
+public partial class MappingProfile : Profile
+{
+    public MappingProfile()
+    {
+        this.MapDto<Lawyer, Dto>()
+            .ForMember(dto => dto.Name, opt => opt.MapFrom((entity, dto) => dto.Name = $"{entity.FirstName} {entity.LastName}"));
+    }
+}
+```
+
+## Lawyer Database Constraints and Server-Side Validation
+- Add a database constraint for the `LastName` column within `Roc\Features\Lawyers\Model\LawyerModelCreating.cs`
+- Add Server Side validation for the `FirstName` and `LastName` fields inside the Lawyer `Edit` Slice
+```
+public partial class CommandValidator : EditCommandValidatorBase<Dto, Lawyer>
+{
+    public CommandValidator(IServiceProvider serviceProvider) : base(serviceProvider)
+    {
+        RuleFor(dto => dto.FirstName).NotEmpty();
+        RuleFor(dto => dto.LastName).NotEmpty();
+    }
+}
+```
