@@ -50,7 +50,7 @@ Options:
 ## ROC Hierarchy
 - Core Files: `Roc\Features\Lawyers`
     - **Models**:
-        - Models which should mirror tables in the database
+        - Models are essentially tables in the database
         - Location: `Roc\Features\Lawyers\Models`
     - **DbSet**: 
         - Used to access the database with Entity Framework
