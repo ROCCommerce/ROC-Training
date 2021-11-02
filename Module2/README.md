@@ -186,7 +186,7 @@ public partial class MappingProfile : Profile
 }
 ```
 
-## Lawyer Database Constraints and Server-Side Validation
+## Add Lawyer Database Constraints and Server-Side Validation
 - Add a database constraint for the `LastName` column within `Roc\Features\Lawyers\Model\LawyerModelCreating.cs`
 - Add Server Side validation for the `FirstName` and `LastName` fields inside the Lawyer `Edit` Slice
 ```
