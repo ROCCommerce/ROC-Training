@@ -129,7 +129,7 @@ const siteSidebarItems: SidebarItemList = [
     - **Testability**
         - By decoupling controller logic from the controller, we can easily test the critical parts of a controller's
         actions.
-        - A typical pattern that can be utilized inside a C# integration test involves calling mediator slices and then
+        - A typical pattern that can be utilized inside a C# integration test involves calling a mediator slice's `Handle` method and then
         verifying the database matches up with the expected results from a mediator request or response.
         - Furthermore, when projects build ontop of base slice methods, they should not need to update integration tests that
         involve base slice methods.
