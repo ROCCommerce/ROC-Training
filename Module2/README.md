@@ -146,7 +146,7 @@ export default (
     - **Query**: Sets the base queryable for listings and autosuggest results. Allows adding filters to listings
     - **Delete**: Soft deletes a single entity
     - **BulkDelete**: Soft deletes a group of entities via a background job. Roc.Tasks needs to be running for this to occur
-    - **Suggest**: Gets a paginated list of entities based on text entered into an Admin autosuggest field
+    - **Suggest**: Gets a list of entities based on text entered into an Admin autosuggest field
     - **Import**: Creates or updates an entity via data uploaded in a csv or excel file
     - **Export**: Generates a csv or excel file containing a list of entities which can be downloaded by an Admin
     - **Definition**: Not an actual slice but located at the same level. Contains a list of endpoints for an entity
