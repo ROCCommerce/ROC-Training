@@ -115,10 +115,24 @@ const siteSidebarItems: SidebarItemList = [
 ```
 
 ## Mediator Basics
-- A “mediator slice” is essentially the meat of a controller action in ROC
-- Slice benefits
-    - Overridability
-    - Testability
+- A “mediator slice” is essentially a way to decouple the logic of a controller action from the actual controller
+
+![Mediator Slice Diagram](../assets/mediator1.png)
+
+- By abstracting controller logic into mediator slices, we get the following benefits:
+    - **Overridability**
+        - Projects may need to change the logic of a particular controller action. Doing this inline will likely
+        cause merge conflicts when upgrading ROC versions.
+        - However, a project could create their own mediator slice which inherits from ROC's mediator slice. Then
+        a project can override the base slice's methods to meet their own needs. This pattern will help ensure that
+        upgrading ROC versions goes smoothly.
+    - **Testability**
+        - By decoupling controller logic from the controller, we can easily test the critical parts of a controller's
+        actions.
+        - A typical pattern that can be utilized inside a C# integration test involves calling mediator slices and then
+        verifying the database matches up with the expected results from a mediator request or response.
+        - Furthermore, when projects build ontop of base slice methods, they should not need to update integration tests that
+        involve base slice methods.
 - `Handle` method is the main method gets called by a slice
 - ROC Admin Slices
     - **Edit**: Creates or updates an entity via data entered into an Admin edit form
