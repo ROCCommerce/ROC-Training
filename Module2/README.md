@@ -91,6 +91,21 @@ Options:
 - Run the migration: `dotnet ef database update`
 
 ## Add Admin Lawyer Routing and Navigation
+- Add lawyer navigation: `ClientApp/components/shared/layout/sidebar/SideBarItemProvider.tsx`
+```
+// Admin navigation object
+const siteSidebarItems: SidebarItemList = [
+	createParentSidebarItem({
+		label: 'CMS',
+		children: [
+			createSubSidebarItem({ label: 'Content Pages', link: '/cms/content-page', isBeta: true }),
+			createSubSidebarItem({ label: 'Pages', link: '/cms/pages' }),
+     	    createSubSidebarItem({ label: 'Page Templates', link: '/cms/templates' }),
+			createSubSidebarItem({ label: 'Lawyers', link: '/cms/lawyers' }),
+```
+
+![Lawyer Sidebar Navigation](../assets/lawyer-sidebar-nav.png)
+
 - Add lawyer routes: `Roc.Admin/ClientApp/routes.Roc.tsx`
 ```
 import Lawyers from 'features/lawyers/Routes';
@@ -102,17 +117,7 @@ export default (
     </>
 );
 ```
-- Add lawyer navigation: `ClientApp/components/shared/layout/sidebar/SideBarItemProvider.tsx`
-```
-// Admin navigation object
-const siteSidebarItems: SidebarItemList = [
-	createParentSidebarItem({
-		label: 'CMS',
-		children: [
-			createSubSidebarItem({ label: 'Content Pages', link: '/cms/content-page', isBeta: true }),
-			createSubSidebarItem({ label: 'Pages', link: '/cms/pages' }),
-			createSubSidebarItem({ label: 'Lawyers', link: '/cms/lawyers' }),
-```
+
 
 ## Mediator Basics
 - A “mediator slice” is essentially a way to decouple the logic of a controller action from the actual controller
@@ -226,10 +231,11 @@ public partial class MappingProfile : Profile
     public MappingProfile()
     {
         this.MapDto<Lawyer, Dto>()
-            .ForMember(dto => dto.Name, opt => opt.MapFrom((entity, dto) => dto.Name = $"{entity.FirstName} {entity.LastName}"));
+            .ForMember(dto => dto.Name, opt => opt.MapFrom((entity, dto) => dto.Name = $"{entity.LastName}, {entity.FirstName} "));
     }
 }
 ```
+- Update the listing page to have columns for first and last names by adding `FirstName` and `LastName` to `Roc.Features.Lawyers.Listing.Dto`
 
 ## Add Lawyer Database Constraints and Server-Side Validation
 - Add a database constraint for the `LastName` column within `Roc\Features\Lawyers\Model\LawyerModelCreating.cs`
@@ -244,3 +250,12 @@ public partial class CommandValidator : EditCommandValidatorBase<Dto, Lawyer>
     }
 }
 ```
+
+## Final Result of Edit and Listing Pages
+### Listing Page
+![Example of lawyer listing page at end of Module2](../assets/lawyer-listing1.png)
+
+### Edit Page
+![Example of lawyer edit page at end of Module2](../assets/lawyer-edit1.png)
+
+## Conclusion of Module 2
