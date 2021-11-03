@@ -133,7 +133,7 @@ const siteSidebarItems: SidebarItemList = [
         verifying the database matches up with the expected results from a mediator request or response.
         - Furthermore, when projects build ontop of base slice methods, they should not need to update integration tests that
         involve base slice methods.
-- `Handle` method is the main method gets called by a slice
+- `Handle` method is the main method that gets called by a slice
 - ROC Admin Slices
     - **Edit**: Creates or updates an entity via data entered into an Admin edit form
     - **Listing**: Gets a paginated list of entities for an Admin listing page
@@ -166,7 +166,6 @@ const siteSidebarItems: SidebarItemList = [
             - `AfterMapAsync`: This method executes after mapping the entity to the result DTO
             - `LoadHistoriesAsync`: Load the historical data into the entity
             - `LogEventAsync`: Logs a view event to the event log
-            - **Note**: 
         - `EditCommandHandlerBase.Handle`: This maps requests dto sent from the client into models which are saved to the database. Calls these methods in this order
             - `CreateOrLoadEntityAsync`: Either loads the existing entity from the backend, or creates a new entity
             - `EnforceConcurrency`: Ensures concurrency by checking if the entity was modified after the form was loaded
@@ -202,8 +201,8 @@ const siteSidebarItems: SidebarItemList = [
         - `AfterMappingAsync`: Converts the models queried from the database into response DTOs
         - `UpdateResultAsync`: Update the query results with paging data and set the basic search fields
 - Examples of ROC Web Slices
-    - Add to Order: `Roc\Features\Commerce\Orders\Slices\FrontEnd\AddToOrder.cs`
-    - Get Product Details: `Roc\Features\Commerce\Products\Slices\FrontEnd\GetProductDetails.cs`
+    - Command type example: Add to Order - `Roc\Features\Commerce\Orders\Slices\FrontEnd\AddToOrder.cs`
+    - Query type example: Get Product Details - `Roc\Features\Commerce\Products\Slices\FrontEnd\GetProductDetails.cs`
 
 ## Modify the Lawyer to Have a First and Last name
 - Update Lawyer Model to have `FirstName` and `LastName` instead of just name
