@@ -4,6 +4,7 @@
 - ROC Code Generator
 - Entity Framework Migrations
 - Mediator and Slices
+- Creation and Basic Customization of a Feature via Code
 
 ## Getting Started - ROC Code Generator
 - Install the ROC Code Generator: `dotnet new -i NewRocFeature --nuget-source http://roc-nuget.idevdesign.net/nuget`
